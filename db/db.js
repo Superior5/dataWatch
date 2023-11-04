@@ -6,6 +6,10 @@ export default new Sequelize(
         host: '188.225.44.61',
         port: '5432',
         dialect: 'postgres',
+        logging: function (str) {
+            console.log(str)
+        }
+    
     }
 )
 
