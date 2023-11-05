@@ -8,26 +8,7 @@ import shell from 'shelljs'
 import { execSync }  from "child_process";
 
 
-const test = 'pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > C:/projects/backend/hackathonBot/backupsmyDump.sql'
-const execRun = (cmd) => {
-    return new Promise((resolve, reject) => {
-      exec(cmd, (error, stdout, stderr) => {
-        if (error) {
-          if (error.code === 1) {
-            // leaks present
-            resolve(stdout);
-          } else {
-            // gitleaks error
-            reject(error);
-          }
-        } else {
-          // no leaks
-          resolve(stdout);
-        }
-      })
-    })
-  }
-
+const test = 'pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > backupsmyDump.sql'
 
 const API_KEY_BOT = "6575266414:AAEs0X5Oxqoq8NHoAbwu479WrA2JwflMh-A";
 
@@ -120,7 +101,7 @@ const start = async () => {
 
         // });
 
-        execute('bash pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > C:\projects\backend\hackathonBot\backups\myDump.sql')
+        execute(test)
         .then(async () => {
             return bot.sendMessage(chatId, `Бэкап сохранен`);
         }).catch(err => {
