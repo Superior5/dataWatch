@@ -3,12 +3,7 @@ import sequelize from "./db/db.js";
 import Test from "./models/test.js";
 import cron from "node-cron";
 import  { execute } from '@getvim/execute';
-import shell from 'shelljs'
 
-import { execSync }  from "child_process";
-
-
-const test = 'PGPASSWORD="&I_?gr-~e^#_s8" pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > backupsmyDump.sql'
 
 const API_KEY_BOT = "6575266414:AAEs0X5Oxqoq8NHoAbwu479WrA2JwflMh-A";
 
@@ -75,31 +70,14 @@ const start = async () => {
 
     
     if (msg.text === "/backup") {
-
-        // (async () => {
-        //     try {
-        //       const testing = await execRun(test)
-        //       console.log(testing)
-        //     } catch (e) {
-        //       console.log(e)
-        //     }
-        //     })()
         
+        const date = new Date();
+        const currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}|${date.getHours()}:${date.getMinutes()}`
 
-        // const dump_result = execSync(test);
-        // console.log(dump_result.toString());
-        // exec("pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > C:\projects\backend\hackathonBot\backupsmyDump.sql", (error, stdout, stderr) => {
-        //     if (error) {
-        //         console.log(`error: ${error.message}`);
-        //         return;
-        //     }
-        //     if (stderr) {
-        //         console.log(`stderr: ${stderr}`);
-        //         return;
-        //     }
-        //     return bot.sendMessage(chatId, `Бэкап сохранен`);
+        const fileName = `database-backup-${currentDate}.tar`;
 
-        // });
+        const test = 'PGPASSWORD="&I_?gr-~e^#_s8" pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > dump.sql'
+
 
         execute(test)
         .then(async () => {
@@ -109,9 +87,6 @@ const start = async () => {
         });
         
       }
-  
-    // await Test.create({chatId, text})
-    return bot.sendMessage(chatId, `Сообщение сохранено.`);
   });
 };
 
