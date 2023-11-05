@@ -72,11 +72,11 @@ const start = async () => {
     if (msg.text === "/backup") {
         
         const date = new Date();
-        const currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}|${date.getHours()}:${date.getMinutes()}`
+        const currentDate = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}.${date.getHours()}:${date.getMinutes()}`
 
         const fileName = `database-backup-${currentDate}`;
 
-        const test = `PGPASSWORD="&I_?gr-~e^#_s8" pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > ${fileName}.sql`
+        const test = `PGPASSWORD="&I_?gr-~e^#_s8" pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > backups/${fileName}.sql`
 
 
         execute(test)
