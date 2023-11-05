@@ -149,6 +149,8 @@ const start = async () => {
     }
 
     bot.on('callback_query', (query) => {
+
+        bot.sendMessage(query.message.chat.id, query.data);
         console.log(query.data)
     })
   });
