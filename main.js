@@ -93,7 +93,7 @@ const start = async () => {
             chatId
         })
 
-        const test = `PGPASSWORD=${PGPASSWORD} pg_dump -h ${HOST} -p ${PORT} -U gen_user default_db > backups/${fileName}`
+        const test = `PGPASSWORD= ${PGPASSWORD} pg_dump -h ${HOST} -p ${PORT} -U gen_user default_db > backups/${fileName}`
 
         execute(test)
         .then(async () => {
