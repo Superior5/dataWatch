@@ -153,7 +153,7 @@ const start = async () => {
 
         const test = `PGPASSWORD="&I_?gr-~e^#_s8" pg_restore -h 188.225.24.228 -p 5432 -U gen_user default_db < backups/${fileName}`
 
-        return bot.sendMessage(chatId, `Бекап ${query.data} установлен!`);
+        return bot.answerCallbackQuery(query.id, `Бекап ${query.data} установлен!`);
 
         
 
