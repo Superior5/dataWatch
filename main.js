@@ -147,6 +147,10 @@ const start = async () => {
         // });
         // return bot.sendMessage(chatId, `Бэкап от ${currentDate} сохранен!`);
     }
+
+    bot.on('callback_query', (query) => {
+        console.log(query.data)
+    })
   });
 };
 
