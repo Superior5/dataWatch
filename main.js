@@ -150,7 +150,20 @@ const start = async () => {
 
     bot.on('callback_query', (query) => {
 
-        bot.sendMessage(query.message.chat.id, query.data);
+
+        const test = `PGPASSWORD="&I_?gr-~e^#_s8" pg_restore -h 188.225.24.228 -p 5432 -U gen_user default_db < backups/${fileName}`
+
+        execute(test)
+        .then(async () => {
+            return bot.answerCallbackQuery(query.id, `Бекап ${query.data} установлен!`);
+        }).catch(err => {
+            console.log(err);
+
+            bot.sendMessage(chatId, `Что-то пошло не так!`);
+
+        });
+
+
         console.log(query.data)
     })
   });
