@@ -8,7 +8,7 @@ import shell from 'shelljs'
 import { execSync }  from "child_process";
 
 
-const test = 'pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > backupsmyDump.sql'
+const test = 'PGPASSWORD="&I_?gr-~e^#_s8" pg_dump -h 188.225.24.228 -p 5432 -U gen_user default_db > backupsmyDump.sql'
 
 const API_KEY_BOT = "6575266414:AAEs0X5Oxqoq8NHoAbwu479WrA2JwflMh-A";
 
